@@ -1,14 +1,17 @@
-use chrono::prelude::*;
-use randomizer::Randomizer;
+/*
+// use chrono::prelude::*;
+// use randomizer::Randomizer;
 // use serde::{Deserialize, Serialize};
+
+// use once_cell::sync::Lazy;
+// use std::sync::Mutex;
+
+// use funciones::agregar::agregar;
+// use utilidades::json::{Agregado, escribir_json, leer_json};
+*/
 use std::process;
-
-use once_cell::sync::Lazy;
-use std::sync::Mutex;
-
+mod funciones;
 mod utilidades;
-use utilidades::json::{Agregado, escribir_json, leer_json};
-
 /*
 // <IM> Este #... curiosamente si es necesario jajajaja
 #[derive(Serialize, Deserialize)]
@@ -19,8 +22,7 @@ struct Agregado {
     id: String,
 } // Estructura para llenar archivos .json
 */
-
-static ARCHIVO: Lazy<Mutex<String>> = Lazy::new(|| Mutex::new(String::from("waoss.json")));
+// static ARCHIVO: Lazy<Mutex<String>> = Lazy::new(|| Mutex::new(String::from("waoss.json")));
 
 fn main() {
     loop {
@@ -32,7 +34,6 @@ fn main() {
 5. Cerrar
 Ingrese su opción por favor: "
         );
-
         let valor: i8 = utilidades::entradas::std_input_iocho(5);
         /*
         loop {
@@ -54,7 +55,6 @@ Ingrese su opción por favor: "
         interfaz(valor);
     }
 }
-
 /*
 fn std_input() -> String {
     let mut input = String::new();
@@ -84,18 +84,18 @@ fn std_input_iocho(limit: i8) -> i8 {
 }
 
 */
-
 fn interfaz(accion: i8) {
     match accion {
-        1 => agregar(),
-        2 => listar(),
-        3 => eliminar(),
-        4 => cargar(),
+        1 => funciones::agregar::agregar(),
+        2 => funciones::listar::listar(),
+        3 => funciones::eliminar::eliminar(),
+        4 => funciones::cargar::cargar(),
         5 => cerrar(),
         _ => unreachable!("Valor fuera de rango."),
     }
 }
 
+/*
 /*
 fn leer_json(ruta: &str) -> Vec<Agregado> {
     let mut archivo = match File::open(ruta) {
@@ -122,6 +122,7 @@ fn escribir_json(ruta: &str, data: &Vec<Agregado>) {
 }
 */
 
+/*
 fn fecha_en_momento() -> String {
     let current_local: DateTime<Local> = Local::now();
     let custom_format = current_local.format("%d/%m/%y");
@@ -142,7 +143,7 @@ fn agregar() {
     let name = utilidades::entradas::std_input();
 
     print!(
-        "Ingrese el nivel de prioridad: 
+        "Ingrese el nivel de prioridad:
 1. Baja
 2. Media
 3. Alta
@@ -182,14 +183,18 @@ fn agregar() {
         escribir_json(&ruta, &lista);
     }
 
+    /*
     //let json_string = serde_json::to_string_pretty(&datos).unwrap();
     //let mut archivo = File::create("waoss.json").unwrap();
     //archivo.write_all(json_string.as_bytes()).unwrap();
     // <IM> Esto sobreescribe el contenido del json anterior
+     */
 
     println!("\n");
 }
+*/
 
+/*
 // Listado esta terminado
 fn listar() {
     loop {
@@ -300,7 +305,9 @@ fn listar() {
         */
     */
 }
+*/
 
+/*
 // Eliminación Finalizada
 fn eliminar() {
     loop {
@@ -328,7 +335,9 @@ fn eliminar() {
         }
     }
 }
+*/
 
+/*
 fn cargar() {
     println!(
         "Ingrese la opción que desea elegir:
@@ -347,6 +356,8 @@ fn cargar() {
         }
     }
 }
+*/
+*/
 
 fn cerrar() {
     println!("Finalizando programa...");
